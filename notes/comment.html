@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Add your comment</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<style>
+			*{
+				margin: 0;
+				padding: 0;
+				box-sizing: border-box;
+			}
+		
+			#notebox{
+				background: #4acf50;
+				color: #fff;
+				width: 60vw;
+				height: 90vh;
+				margin: 5vh auto;
+				border: 2px solid #4acf50;
+				border-radius: 8px;
+				padding-top: 10px;
+				overflow: hidden;
+			}
+			
+			#controllers{
+				width: 98%;
+				margin: 0 auto;
+			}
+
+			button{
+				cursor: pointer;
+				border:none;
+				background: #ccc;
+			}
+			
+			button:hover{
+				background: #e8e8e8;
+			}
+			
+			button:nth-of-type(19){
+				margin-top: 20px;
+				
+			}
+			
+			iframe{
+				width: 90%;
+				height: 80%;
+				border: 2px solid #4acf50;
+				border-radius: 8px;
+				margin: 20px 30px;
+				overflow-y: scroll;
+				overflow-x: none;
+				background:#fff;
+			}
+			
+		</style>
+	</head>
+	<body onload="textfield.document.designMode = 'On';">
+		<div id="notebox">
+			<div id="controllers">
+				<select onchange="execCmdWithArgs('fontName', this.value)" name="font_family" style="height:30px;width:100px;font-size:16px;">
+					
+					<option value="serif">serif</option>
+					<option value="Times New Roman">Times New Roman</option>
+					<option value="Trebuchet ms">Trebuchet ms</option>
+					<option value="sans-serif" selected>sans-serif</option>
+					<option value="Comic sans ms">Comic sans ms</option>
+					<option value="monospace">monospace</option>
+					
+				</select>
+				<select onchange="execCmdWithArgs('fontSize', this.value)" name="font_size" style="outline:none;height:30px;width:38px;font-size:16px;box-sizing:none;">
+					
+					<option value="6">6</option>
+					<option value="7">7</option>
+					<option value="8">8</option>
+					<option value="9">9</option>
+					<option value="10">10</option>
+					<option value="11">11</option>
+					<option value="12">12</option>
+					<option value="13">13</option>
+					<option value="14">14</option>
+					<option value="15">15</option>
+					<option value="16">16</option>
+					
+				</select>
+				<select onchange="execCmdWithArgs('formatBlock', this.value)" name="heading" style="outline:none;height:30px;width:40px;font-size:16px;box-sizing:none;">
+					
+					<option value="H1">h1</option>
+					<option value="H2">h2</option>
+					<option value="H3">h3</option>
+					<option value="H4">h4</option>
+					<option value="H5">h5</option>
+					<option value="H6">h6</option>
+					
+				</select>
+				<button onclick="execCmd('bold')"><img src="icons/bold_icon.png"></button>
+				<button onclick="execCmd('underline')"><img src="icons/u_icon.png"></button>
+				<button onclick="execCmd('italic')"><img src="icons/italic_icon1.png"></button>
+				<button onclick="execCmd('strikeThrough')"><img src="icons/strikethrough_icon.png"></button>
+				<button onclick="execCmd('bold')"><img src="icons/inverted_comma1.png"><img src="icons/inverted_comma2.png"></button>
+				<button onclick="execCmd('justifyLeft')"><img src="icons/align_left_icon.png"></button>
+				<button onclick="execCmd('justifyCenter')"><img src="icons/align_center_icon.png"></button>
+				<button onclick="execCmd('justifyRight')"><img src="icons/align_right_icon.png"></button>
+				<button onclick="execCmd('justifyFull')"><img src="icons/justify_icon.png"></button>
+				<button onclick="execCmd('subscript')"><img src="icons/subscript_icon.png"></button>
+				<button onclick="execCmd('superscript')"><img src="icons/superscript_icon.png"></button>
+				<button onclick="execCmd('undo')"><img src="icons/undo_icon.png"></button>
+				<button onclick="execCmd('redo')"><img src="icons/redo_icon.png"></button>
+				<button onclick="execCmd('insertOrderedList')"><img src="icons/ordered_list_icon.png"></button>
+				<button onclick="execCmd('insertUnorderedList')"><img src="icons/unordered_list_icon.png"></button>
+				<button onclick="execCmdWithArgs('createLink', prompt('Enter the url:', ''))"><img src="icons/link_icon.png"></button>
+				<button onclick="execCmdWithArgs('insertImage', prompt('Enter the image path or url:', ''))"><img src="icons/img_icon2.png"></button>
+				<button onclick="toggleSource()"><img src="icons/html_code_icon.png"></button>
+				<button onclick="execCmd('delete')"><img src="icons/delete_icon.png"></button>
+				<span>
+					Text-color: <input type="color" onchange="execCmdWithArgs('foreColor', this.value)">
+					Background-color: <input type="color" onchange="execCmdWithArgs('backColor', this.value)">
+				</span>
+			</div>
+			
+			<iframe name="textfield"></iframe>
+			
+		</div>
+		
+		<script>
+			
+			
+			let showCode = false;
+			
+			function execCmd(command){
+				textfield.document.execCommand(command, false, null);
+			}
+			
+			function execCmdWithArgs(command, arg){
+				
+				textfield.document.execCommand(command, false, arg);
+				
+			}
+			
+			function toggleSource(){
+				if(showCode){
+					textfield.document.querySelector('body').innerHTML = textfield.document.querySelector('body').textContent;
+					showCode = false;
+					
+				}else{
+					
+					textfield.document.querySelector('body').textContent = textfield.document.querySelector('body').innerHTML;
+					showCode = true;
+					
+				}
+			}
+			
+		</script>
+	</body>
+</html>

@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+	<html>
+		<head>
+			<link rel="stylesheet" type="text/css" href="main.css"/>
+			<title>Chat Bot App</title>
+			<style>
+				body{
+					background: #00cc66;
+				}
+				.container{
+					width: 40%;
+					height: 850px;
+					margin: 50px auto;
+					
+				}
+				
+				#user-details{
+					border:none;
+					border-radius: 12px 12px 0 0;
+					text-align:center;
+					background: rgb(23, 227, 0);
+					height: 40%;
+					text-align:center;
+				}
+				
+				#user-details #username{
+					margin: auto;
+					padding: 6px 12px;
+					width:50%;
+					font-size: 30px;
+					color: white;
+					font-family: arial;
+					border: 2px solid #fff;
+				}
+				.form-container{
+					height: 60%;
+					background-color:white;
+					border:none;
+					border-radius: 0 0 12px 12px;
+				}
+				
+				#user-details img{
+					margin-top: 50px;
+					border-radius: 50%;
+				}
+				
+				.form-container form{
+					padding: 10px;
+				}
+				.form-container form input{
+					font-size: 20px;
+					display: block;
+					width: 95%;
+					padding: 5px 10px;
+					margin-top: 20px;
+					margin-bottom: 40px;
+					border:none;
+					border-bottom: 2px solid rgb(23, 190, 0);
+					color: rgb(23, 227, 0);
+					transition: border-bottom 0.4s;
+				}
+				
+				.form-container form input:focus{
+					outline: none;
+					border:none;
+					border-bottom: 2px solid rgb(23, 92, 0);
+				}
+				.form-container form input::placeholder{
+					color: rgba(0,0,0,0.5);
+					font-size: 20px;
+					font-family: "comic sans ms", serif;
+				}
+				
+				.form-container form label{
+					text-align: left;
+					font-family: sans-serif;
+					color: rgba(0,0,0,0.6);
+				}
+				
+				.form-container form select{
+					display: block;
+					width: 95%;
+					height: 55px;
+					border-radius: 8px;
+					font-family: "comic sans ms", sans-serif;
+					font-size: 20px;
+					padding: 10px 12px;
+					margin-bottom: 30px;
+					
+				}
+				
+				.form-container form select:focus{
+					outline: none;
+					border: 2px solid green;
+					
+				}
+				
+				.form-container form button{
+					margin: auto;
+					background: #00cc66;
+					border: none;
+					border-radius: 6px;
+					color: white;
+					padding: 10px 32px;
+					text-align: center;
+					text-decoration: none;
+					display: block;
+					cursor: pointer;
+					font-size: 20px;
+					font-family: "comic sans ms", sans-serif;
+					transition: background 0.4s;
+				}
+				
+				.form-container form button:hover{
+					background: rgb(23, 227, 0);
+				}
+				
+			</style>
+		</head>
+		
+		<body>
+			<div class="container">
+				<div id="user-details">
+					<img src="oluwaseyi4.png" title="user's image"/>
+					<br/>
+					<br/>
+					<div id="username">Username</div>
+				</div>
+				<div class="form-container">
+					<form id="myform" method="post">
+						<input type="text" name="fullname" placeholder= "Fullname..." maxlength="60">
+						<input type="email" name="email" placeholder="E-mail Address..."/>
+						<input type="tel" name="phonenumber" placeholder="Phone number"/>
+						<input type="password" name="password" placeholder="Password..."/>
+						<input type="hidden" name="comment_date"/>
+						<label for="language">*Select your preferred language(default is English)</label>
+						<select id="language" name="language">
+							<option>English</option>
+							<option>French</option>
+							<option>German</option>
+							<option>Mandarin</option>
+							<option>Latin</option>
+						</select>
+						
+						<button type="submit" name="save_details">Save</button>
+					</form>
+				</div>
+			</div>
+			<script>
+				
+				form = document.querySelector("form");
+				
+				console.log(form.elements)
+				console.log(form.elements.password)
+				console.log('hello')
+				
+				
+				form.addEventListener("submit", function(event){
+				
+					event.preventDefault();
+					
+					form.comment_date.value = new Date();
+					
+					console.log('Saving value', form.elements.comment_date.value)
+					console.log('Saving value', form.comment_date.value)
+					console.log('Saving value', form.elements.password.value)
+					
+				
+				});
+				
+			</script>
+		</body>
+	</html>
